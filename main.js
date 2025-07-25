@@ -12,13 +12,13 @@ function startBirthday()
   const birthdayMessage = document.getElementById('birthdayMessage');
   birthdayMessage.textContent = `${nama}!`;
 
-  // 👉 Masukkan nama & umur ke dalam surat
-  document.getElementById('namaOutput').textContent = nama;
-  document.getElementById('umurOutput').textContent = umur;
-
   // Scroll ke section kedua
   const section2 = document.getElementById('section2');
   section2.scrollIntoView({ behavior: "smooth" });
+  
+  // 👉 Masukkan nama & umur ke dalam surat
+  document.getElementById('namaOutput').textContent = nama;
+  document.getElementById('umurOutput').textContent = umur;
 }
 
 
