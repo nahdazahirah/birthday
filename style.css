@@ -1,0 +1,660 @@
+/* ===== Global Settings ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Caveat Brush', cursive;
+  scroll-behavior: smooth;
+}
+
+body {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+/* ===== Each Section as Fullscreen Frame ===== */
+section {
+  width: 100%;
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  position: relative;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 100%;
+  background: rgba(31, 65, 8, 0.4); /* perbaikan: transparan 40% */
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  z-index: 1000;
+}
+
+.menu a {
+  color: inherit;            
+  text-decoration: none;   
+}
+
+
+.logo {
+  width: 35px;
+  height: 35px;
+  animation: wiggle 1s infinite;
+  filter: drop-shadow(0 4px 4px rgba(255, 255, 255, 0.8));
+}
+
+/* Home section */
+.home {
+  background-color: #A3B18A;
+  padding-top: 70px;
+  width: 100%;
+  height: 140vh;
+  overflow: visible;
+  z-index: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin-left: auto;
+}
+
+.menu li {
+  font-family: 'Inter', sans-serif;
+  font-size: 16pt;
+  font-weight: 400;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  padding: 6px 10px;
+  border-radius: 13px;
+}
+
+.menu li:hover {
+  background-color: #A3B18A;
+}
+
+/* Awan */
+.awan {
+  width: 30%;
+  height: auto;
+  position: absolute;
+  top: 70px;
+  opacity: 0.6;
+  animation: masukAwan 2s ease forwards;
+  z-index: 5;
+}
+
+.awan.left {
+  left: -35%;
+  animation-name: awanKiri;
+}
+
+.awan.right {
+  right: -35%;
+  transform: scaleX(-1);
+  animation-name: awanKanan;
+}
+
+@keyframes awanKiri {
+  to { left: 0; }
+}
+
+@keyframes awanKanan {
+  to { right: 0; }
+}
+
+/* Lembah */
+.lembah {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  animation: naikLembah 2s ease forwards;
+  z-index: 2;
+}
+
+@keyframes naikLembah {
+  from { transform: translateY(100px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Kertas Container */
+.kertas-container {
+  position: relative;
+  width: 500px;
+  max-width: 90vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Eagle Lake', cursive;
+  animation: slideDown 1s ease-out forwards;
+  opacity: 0;
+  transform: translateY(-50px);
+  z-index: 10;
+}
+
+.kertas {
+  width: 100%;
+  display: block;
+  position: relative;
+  z-index: 0; /* penting agar tidak menutupi form */
+}
+
+/* Formulir */
+.formulir {
+  position: absolute;
+  top: 26%;
+  left: 58%;
+  transform: translateX(-50%);
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  z-index: 10;
+  text-align: left;
+  font-family: 'Eagle Lake', cursive;
+}
+
+.formulir input {
+  padding: 7px;
+  border: 2px solid;
+  border-image-slice: 1;
+  border-radius: 6px;
+  background-color: whitesmoke;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+  font-size: 16px;
+  width: 80%;
+  font-family: 'Eagle Lake', cursive;
+  z-index: 11;
+}
+
+.formulir label {
+  font-family: 'Eagle Lake', cursive;
+  font-size: 32px;
+  color: #000;
+  font-weight: 400;
+}
+
+/* Animasi slide turun */
+@keyframes slideDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bintang {
+  position: absolute;
+  color: gold;
+  z-index: 2;
+  animation: kelapKelip 2s infinite;
+  opacity: 0.8;
+}
+
+@keyframes kelapKelip {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+/* Logo wiggle */
+@keyframes wiggle {
+  0%, 100% { transform: scaleX(-1) rotate(0deg); }
+  25%, 75% { transform: scaleX(-1) rotate(5deg); }
+  50% { transform: scaleX(-1) rotate(-5deg); }
+}
+
+/* Tombol Enter */
+.enter-button {
+  font-family: 'Inter', sans-serif;
+  position: absolute;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  color: #2d2618;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 12;
+  box-shadow: 0 4px 4px rgba(163, 177, 138, 0.8);
+  transition: all 0.3s ease;
+}
+
+.enter-button:hover {
+  background-color: #9aa467;
+  color: white;
+}
+
+/* Daun gugur */
+.daun {
+  position: absolute;
+  width: 30px;
+  animation: gugur 10s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes gugur {
+  0% { transform: translateY(-100px) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(360deg); }
+}
+
+
+/*HALAMAN SELANJUTNYA*/
+#cake {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  z-index: 2;
+}
+
+/* ====== Bagian Birthday Card ====== */
+.frame {
+  position: relative;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.frame img.frame1 {
+  overflow: visible;
+  margin-top: 20px;
+  margin-left: 100px;
+  width: 90%;
+  height: 90%;
+  object-fit: contain; /* atau contain, tergantung preferensi kamu */
+  z-index: 0;
+}
+
+.birthday {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row; /* <-- baris bukan kolom */
+  justify-content: space-around;
+  align-items: center;
+  text-align: left;
+  z-index: 10;
+  padding: 20px;
+  gap: 40px;
+}
+
+.birthday-text {
+  flex: 1;
+  padding-left: 20vh;
+}
+
+.birthday-text h1 {
+  font-size: 80px;
+  text-align: center;
+  color: #1F4108;
+  height: 340px;
+  width: 579px;
+  margin-top: 50px; 
+  font-weight: 300;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
+}
+
+.birthday-cake {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 40px;
+  margin-left: -60px;
+}
+
+.birthday-cake h3 {
+  font-family: 'Fira Code', monospace;
+  width: 300px;
+  height: 16px;
+  font-size: 24px;
+  color: white;
+  letter-spacing: 0.2em; /* ubah 30% jadi satuan valid */
+  position: relative;
+  left : 20px;
+  top: -35px; /* naikkan 10px ke atas */
+  margin-top: 0;
+}
+
+.birthday .cake {
+  width: 250px;
+  border-radius: 20px;
+  background-color: #1f4108d9;
+  padding: 10px;
+  box-shadow: 0 4px 8px #A3B18A;
+  z-index: 11;
+}
+
+.birthday .tiup-lilin {
+  margin-top: 20px;
+  width: 200px;
+  height: 60px;
+  background-color: #588157;
+  color: white;
+  border: none;
+  border-radius: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  z-index: 11;
+}
+
+.birthday .tiup-lilin:hover {
+  background-color: #3a5a40;
+  box-shadow: 0 4px 8px #A3B18A;
+}
+
+
+/* ====== Kelinci di kiri bawah ====== */
+.gif-kelinci {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 90px;
+  z-index: 4;
+}
+
+/* ====== Vinyl Musik Kanan Bawah ====== */
+.nyanyi .vinyl {
+  position: absolute;
+  bottom: 0%;
+  left: 60%;
+  width: 80px;
+  z-index: 11;
+  cursor: pointer;
+}
+
+/* Animasi rotasi */
+.vinyl.berputar {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ====== Scroll Panah ====== */
+.panah {
+  position: absolute;
+  bottom: 15px;
+  left: 42%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  color: #2d2d2d;
+  z-index: 6;
+}
+
+.panah img {
+  width: 40px;
+  margin-top: 5px;
+}
+
+/* Gambar Pohon Menimpa Dua Section */
+.pohon {
+  position: absolute;
+  top: -250px; /* naik ke atas agar terlihat di home */
+  left: 0;
+  width: 820px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/*Section 3 letter 1*/
+.letter-section {
+  background-color: #fff;
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.amplop {
+  position: absolute;
+  bottom: 25%;
+  left: 21%;
+  width: 30%;
+  z-index: 3;
+  cursor: pointer;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.amplop.kedut {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-5px, 0); }
+  40% { transform: translate(5px, 0); }
+  60% { transform: translate(-5px, 0); }
+  80% { transform: translate(5px, 0); }
+  100% { transform: translate(0, 0); }
+}
+
+.lampu {
+  position: absolute;
+  bottom: 0;
+  height: 500px; /* dari 100px jadi 150px */
+  width: 300px;   /* dari 60px jadi 90px */
+  left: -20px;
+  z-index: 2;
+}
+
+.rumput {
+  position: absolute;
+  overflow: visible;
+  bottom: 0px;
+  right: 0px;
+  width: 20%;
+  height: auto;
+  z-index: 1;
+}
+
+.frame2 {
+  overflow: visible;
+  margin-top: 20px;
+  margin-left: 100px;
+  width: 88%;
+  height: 88%;
+  object-fit: contain; /* atau contain, tergantung preferensi kamu */
+  z-index: 0;
+}
+
+/*Section Letter 2*/
+#section-berikutnya {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.surat-section {
+  background: url('image/kertas-tekstur.jpg') no-repeat center center/cover;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 80px 100px;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Kartu Surat */
+.surat-kartu {
+  background: url('image/bg-surat.jpg') no-repeat center center/cover;
+  width: auto;
+  margin-left: 10px;
+  height: 477px;
+  padding: 40px 50px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+/* Isi Surat */
+.isi-surat {
+  font-family: 'Nanum Pen Script', cursive;
+  width: 558px;
+  height: 334px;
+  line-height: 1.2;
+  font-size: 22px;
+  color: #2d2d2d;
+  box-sizing: border-box;
+}
+
+/* Daun Ranting */
+.ranting {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 505px;
+  height: auto;
+  z-index: 5; /* pastikan di atas elemen lain */
+  pointer-events: none; /* supaya tidak ganggu klik */
+}
+
+/* Kolom Kanan untuk hati 💚 */
+.hati-bagian {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 3;
+}
+
+/* Emoji hati 💚 */
+.hati-bentuk {
+  font-size: 250px;
+  margin-top: 70%;
+  margin-right: 30%;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+  line-height: 1;
+  z-index: 6;
+
+  animation: heartbeat 3s infinite ease-in-out;
+  transform-origin: center center;
+}
+
+@keyframes heartbeat {
+  0%   { transform: scale(1); }
+  14%  { transform: scale(1.3); }
+  28%  { transform: scale(1); }
+  42%  { transform: scale(1.3); }
+  70%  { transform: scale(1); }
+}
+
+
+/* Teks bawah hati */
+.hati-teks {
+  font-family: 'Nanum Pen Script', cursive;
+  top: 90%;
+  margin-right: 30%;
+  font-size: 20px;
+  color: #2d2d2d;
+  z-index: 7;
+}
+
+/*Section Footer*/
+.kontak-section {
+  display: flex;
+  height: 300px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #123d24; /* warna hijau gelap */
+  color: white;
+  padding: 40px 20px;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  flex-wrap: wrap;
+}
+
+.kontak-kiri {
+  max-width: 50%;
+  font-family: 'Inter', sans-serif;
+}
+
+.kontak-kiri h2 {
+  font-size: 48px;
+  font-weight: bold;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.kontak-kiri p {
+  font-size: 20px;
+  margin: 6px 0;
+  font-weight: 500;
+}
+
+.kontak-kanan {
+  width: 35%;
+  background: url('image/frame3.png') no-repeat center center/cover;
+  font-family: 'Poppins', sans-serif;
+  color: #1b1b1b;
+}
+
+.kontak-box 
+{
+  padding: 40px 30px;
+  margin-left: 20px;
+}
+
+.kontak-box h3 {
+  font-family: 'Marko One', serif;
+  font-size: 36px;
+  margin-bottom: 16px;
+  color: #1b1b1b;
+}
+
+.kontak-box p {
+  margin: 8px 0;
+  font-size: 18px;
+  color: #1b1b1b;
+}
+
+.kontak-box a {
+  color: #1b1b1b;
+  text-decoration: none;
+}
+
+
+

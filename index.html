@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Halaman Ilona</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Poppins&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Eagle+Lake&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Marko+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <img src="image/Dino.png" alt="Logo Dino" class="logo" />
+        <ul class="menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#Cake">Cake</a></li>
+            <li><a href="#Letter">Letter</a></li>
+            <li><a href="#kontak">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- SECTION HOME -->
+    <section class="home" id="home">
+        <img src="image/awan.png" class="awan left" alt="Awan kiri">
+        <img src="image/awan.png" class="awan right" alt="Awan kanan">
+
+        <div class="kertas-container">
+        <img src="image/kertas gulung.png" class="kertas" />
+        <div class="bintang-wrapper">
+            <span class="bintang" style="top: 140px; left: 120px; font-size: 12px;">⭐</span>
+            <span class="bintang" style="top: 150px; left: 380px; font-size: 18px;">⭐</span>
+            <span class="bintang" style="top: 170px; left: 370px; font-size: 12px;">⭐</span>
+            <span class="bintang" style="top: 175px; left: 385px; font-size: 10px;">⭐</span>
+            <span class="bintang" style="top: 260px; left: 280px; font-size: 20px;">✨</span>
+            <span class="bintang" style="top: 340px; left: 70px; font-size: 14px;">⭐</span>
+        </div>
+
+        <div class="formulir">
+            <label for="nama">Nama:</label>
+            <input type="text" id="namaInput" placeholder="Masukkan nama" />
+            <label for="umur">Umur:</label>
+            <input type="text" id="umurInput" placeholder="Masukkan umur" />
+        </div>
+        </div>
+
+        <!-- Tombol Mulai -->
+        <button class="enter-button" onclick="startBirthday()">Mulai →</button>
+
+        <div class="daun-container"></div>
+        <img src="image/lembah.png" class="lembah" alt="Lembah">
+        <audio id="audioBurung" src="music/suara burung.mp3" autoplay loop></audio>
+    </section>
+
+    <!-- SECTION CAKE -->
+    <section class="Cake" id="Cake">
+        <img src="image/pohon.png" alt="Pohon" class="pohon">
+        
+        <div class="frame">
+        <img src="image/frame1.png" class="frame1" alt="Cake Ulang Tahun">
+
+        <div class="birthday">
+            <!-- Kiri: Teks -->
+            <div class="birthday-text">
+            <h1>SELAMAT<br>ULANG TAHUN<br><span id="birthdayMessage">...</span></h1>
+            </div>
+
+            <!-- Kanan: Kue + Tombol -->
+            <div class="birthday-cake">
+            <h3>HAPPY BIRTHDAY</h3>
+            <img src="image/cake.png" class="cake" alt="Cake Ulang Tahun">
+            <button class="tiup-lilin">Tiup Lilin 🎉</button>
+            </div>
+        </div>
+        </div>
+
+        <div class="gif-kelinci" style="width: 180px; margin: 10px auto;">
+        <div class="tenor-gif-embed" data-postid="5969753607081433716" data-share-method="host" data-aspect-ratio="0.993007" data-width="100%">
+            <a href="https://tenor.com/view/bunny-dance-bunny-dance-gif-5969753607081433716">Bunny Dance Sticker</a>
+            from <a href="https://tenor.com/search/bunny-stickers">Bunny Stickers</a>
+        </div>
+        </div>
+
+        <div class="nyanyi">
+            <img src="image/musik.png" class="vinyl" id="vinyl" alt="Vinyl">
+            <audio id="lagu" src="music/lagu selamat.mp3"></audio>
+        </div>
+
+        <div class="panah">
+        <span>SCROLL</span>
+        <img src="image/panah.png" alt="Panah bawah">
+        </div>
+    </section>
+
+    <!--Section Letter 1-->
+    <section class="letter-section" id="Letter">
+        <img src="image/frame2.png" alt="Frame2" class="frame2">
+        <img src="image/amplop.png" alt="Amplop" class="amplop" onclick="bukaSurat()">
+        <!-- LAMPU -->
+        <img src="image/lampu.png" class="lampu" alt="Lampu Gantung">
+        <!-- RUMPUT -->
+        <img src="image/rumput.png" class="rumput" alt="Rumput">
+    </section>
+
+    <!--Section Letter 2-->
+    <section id="section-berikutnya" class="surat-section">
+        <div class="surat-kartu">
+            <p class="isi-surat">
+            Dear <span id="namaOutput"></span>,<br>
+            Selamat ulang tahun ke <span id="umurOutput"></span>!<br><br>
+                Semoga tahun ini lancar—kuliahnya, hidupnya, semuanya. Aku mungkin jarang ngomong, tapi aku appreciate pertemanan kita.
+            Meski nggak sering ketemu, nyatanya kita masih bisa ngobrol tanpa drama. That’s something.<br>
+                Capek kuliah? Wajar. Tapi santai aja, lama-lama juga beres. Yang penting jangan lupa istirahat. Kalau butuh bantuan atau sekadar teman cerita, aku bisa jadi pendengar.<br>
+            Semoga mimpi-mimpimu tahun ini tercapai. Let’s keep it real.<br><br>
+            <span style="float: right;">Salam sayang dari Nahda</span>
+            </p>
+        </div>
+
+        <div class="hati-bagian">
+            <img src="image/daun-ranting.png" alt="Ranting Daun" class="ranting">
+            <div class="hati-bentuk">💚</div>
+            <p class="hati-teks">From my little heart</p>
+        </div>
+    </section>
+
+    <!--Section Footer-->
+    <section id="kontak" class="kontak-section">
+        <div class="kontak-kiri">
+            <h2><strong>TERTARIK PUNYA<br>WEBSITE SEKEREN INI?</strong></h2>
+            <p>Langsung hubungi kami —</p>
+            <p>Desain bisa dibuat sesuai tema pilihanmu.</p>
+        </div>
+        <div class="kontak-kanan">
+            <div class="kontak-box">
+            <h3><strong>Contact Us:</strong></h3>
+            <p>Instagram : <a href="https://www.instagram.com/nahda_zhr/" target="_blank">nahda_zhr</a></p>
+            <p>Email : — </p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
